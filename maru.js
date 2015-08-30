@@ -35,10 +35,10 @@ getJSON('https://api.github.com/repos/'+user.value+'/'+repo.value+'/issues').the
 
    for(var key in data)
    {
-    if(data.hasOwnProperty(key))
+    if(data.hasOwnProperty(key))  //loops through all objects 
     {
       if(data[key].state=='open')
-        cnt++;
+      {
       date_t=data[key].updated_at;
       datem=date_t.split('T');  //date is in format of YYYY-MM-DDT00.00. So split and get the date
       date=datem[0]; //first value is the date
@@ -53,10 +53,11 @@ getJSON('https://api.github.com/repos/'+user.value+'/'+repo.value+'/issues').the
         size_7++;
       else size_8++;
       console.log(size_1,size_7,size_8);
-      size_8=total-size_1-size_7;
-      document.getElementById("show").innerHTML="No of issues open in last 24 hours are "+size_1+"<br>"+" No of issues open in last 7 days are "+size_7+"<br>"+" No of issues open more than 7 days are"+size_8;
+      }
+      
     }
-   }console.log(cnt);
+   }size_8=total-size_1-size_7;
+   document.getElementById("show").innerHTML="No of issues open in last 24 hours are "+size_1+"<br>"+" No of issues open in last 7 days are "+size_7+"<br>"+" No of issues open more than 7 days are"+size_8;
 
 }, function(status) { //error detection....
   alert('Something went wrong.Maybe the following git user/repo does not exists');
