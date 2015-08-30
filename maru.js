@@ -51,7 +51,7 @@ getJSON('https://api.github.com/repos/'+user.value+'/'+repo.value+'/issues').the
         size_1++;
       else if(n-b<8 && n-b>=1)
         size_7++;
-      else size_8++;
+      //else size_8++;
       console.log(size_1,size_7,size_8);
       }
       
